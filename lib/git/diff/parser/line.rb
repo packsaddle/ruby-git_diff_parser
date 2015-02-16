@@ -5,9 +5,9 @@ module Git
         attr_reader :number, :patch_position
 
         def initialize(options = {})
-          if !options[:number] || !options[:content] || !options[:patch_position]
-            fail(ArgumentError('this param is required'))
-          end
+          fail(ArgumentError('number is required')) unless options[:number]
+          fail(ArgumentError('content is required')) unless options[:content]
+          fail(ArgumentError('patch_position is required')) unless options[:patch_position]
           @number = options[:number]
           @content = options[:content]
           @patch_position = options[:patch_position]
