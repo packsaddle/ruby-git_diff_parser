@@ -1,28 +1,9 @@
 # Git::Diff::Parser
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/git/diff/parser`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](http://img.shields.io/gem/v/git-diff-parser.svg?style=flat)](http://badge.fury.io/rb/git-diff-parser)
+[![Build Status](http://img.shields.io/travis/packsaddle/ruby-git-diff-parser/master.svg?style=flat)](https://travis-ci.org/packsaddle/ruby-git-diff-parser)
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'git-diff-parser'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install git-diff-parser
-
-## Usage
-
-TODO: Write usage instructions here
+Parser for `git diff`.
 
 ## Development
 
