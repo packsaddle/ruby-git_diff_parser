@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Git::Diff::Parser do
+describe Git::Diff::Parser::Patch do
   describe '#changed_lines' do
     it 'returns lines that were modified' do
       patch_body = File.read('spec/support/fixtures/patch.diff')
