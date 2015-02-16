@@ -1,4 +1,4 @@
-require "git/diff/parser/version"
+require 'git/diff/parser/version'
 
 module Git
   module Diff
