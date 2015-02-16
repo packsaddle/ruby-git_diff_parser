@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - 'bundle_bin/*'
+    - 'vendor/bundle/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+
+Style/FileName:
+  Exclude:
+    - exe/*
+
+Style/RegexpLiteral:
+  MaxSlashes: 0
