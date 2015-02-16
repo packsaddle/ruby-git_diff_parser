@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Git::Diff::Parser do
-  describe "#changed_lines" do
+  describe '#changed_lines' do
     it 'returns lines that were modified' do
       patch_body = File.read('spec/support/fixtures/patch.diff')
       patch = Git::Diff::Parser::Patch.new(patch_body)
@@ -12,7 +12,7 @@ describe Git::Diff::Parser do
     end
 
     context 'when body is nil' do
-      it "returns no lines" do
+      it 'returns no lines' do
         patch = Git::Diff::Parser::Patch.new(nil)
 
         expect(patch.changed_lines.size).to eq(0)
