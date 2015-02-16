@@ -27,6 +27,6 @@ Copyright (c) 2015 sanemat. [Licensed under the MIT license](./LICENSE)
 
 Copyright (c) 2014 thoughtbot, inc. [Licensed under the MIT license](./thoughtbot-hound/LICENSE)
 
-* lib/git/diff/parser/line.rb
-* lib/git/diff/parser/patch.rb
-* spec/git/diff/parser/patch_spec.rb
+* app/models/line.rb -> lib/git/diff/parser/line.rb
+* app/models/patch.rb -> lib/git/diff/parser/patch.rb
+* spec/models/patch_spec.rb -> spec/git/diff/parser/patch_spec.rb
