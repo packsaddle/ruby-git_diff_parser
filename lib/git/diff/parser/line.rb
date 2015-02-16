@@ -4,10 +4,13 @@ module Git
       class Line
         attr_reader :number, :patch_position
 
-        def initialize(number:, content:, patch_position:)
-          @number = number
-          @content = content
-          @patch_position = patch_position
+        def initialize(options = {})
+          if !options[:number] || !options[:content] || !options[:patch_position]
+            fail(ArgumentError('this param is required'))
+          end
+          @number = options[:number]
+          @content = options[:content]
+          @patch_position = options[:patch_position]
         end
 
         def changed?
