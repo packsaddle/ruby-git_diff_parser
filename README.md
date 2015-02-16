@@ -37,3 +37,15 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## License
+### git-diff-parser
+Copyright (c) 2015 sanemat. [Licensed under the MIT license](./LICENSE)
+
+### original [thoughtbot/hound](https://github.com/thoughtbot/hound)
+
+Copyright (c) 2014 thoughtbot, inc. [Licensed under the MIT license](./thoughtbot-hound/LICENSE)
+
+* lib/git/diff/parser/line.rb
+* lib/git/diff/parser/patch.rb
+* spec/git/diff/parser/patch_spec.rb
