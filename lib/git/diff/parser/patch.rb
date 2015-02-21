@@ -6,8 +6,11 @@ module Git
         MODIFIED_LINE = /^\+(?!\+|\+)/
         NOT_REMOVED_LINE = /^[^-]/
 
-        def initialize(body)
+        attr_accessor :file
+
+        def initialize(body, options = {})
           @body = body || ''
+          @file = options[:file] || options['file'] if options[:file] || options['file']
         end
 
         def changed_lines
