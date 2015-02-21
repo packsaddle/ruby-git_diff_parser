@@ -4,7 +4,7 @@ module Git
     module Parser
       class Patches < DelegateClass(Set)
         def self.[](*ary)
-          self.new(ary)
+          new(ary)
         end
 
         def initialize(*args)
