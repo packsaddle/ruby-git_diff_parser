@@ -5,6 +5,42 @@
 
 Parser for `git diff`.
 
+## Example
+
+```ruby
+diff = <<'EOL'
+diff --git a/lib/saddler/reporter/github.rb b/lib/saddler/reporter/github.rb
+index fc33cdd..0638356 100644
+--- a/lib/saddler/reporter/github.rb
++++ b/lib/saddler/reporter/github.rb
+@@ -2,6 +2,7 @@
+ require 'octokit'
+ require 'git'
+ require 'saddler/reporter/github/version'
++require 'saddler/reporter/github/support'
+ require 'saddler/reporter/github/helper'
+ require 'saddler/reporter/github/client'
+ require 'saddler/reporter/github/comment'
+EOL
+
+patches = Git::Diff::Parser.parse(diff)
+=> [#<Git::Diff::Parser::Patch:0x007fb313189430
+@body="@@ -2,6 +2,7 @@\n require 'octokit'\n require
+ 'git'\n require 'saddler/reporter/github/version'\n+r
+ equire 'saddler/reporter/github/support'\n require 'sad
+ dler/reporter/github/helper'\n require 'saddler/reporte
+ r/github/client'\n require 'saddler/reporter/github/com
+ ment'\n", @file="lib/saddler/reporter/github.rb">]
+
+patches[0].file
+=> "lib/saddler/reporter/github.rb"
+patches[0].changed_lines
+=> [#<Git::Diff::Parser::Line:0x007fb3130a53e8
+ @number=5,
+ @content="+require 'saddler/reporter/github/support'\n",
+ @patch_position=4>]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
