@@ -5,7 +5,7 @@
 
 Parser for `git diff`.
 
-## Example
+## Examples
 
 ```ruby
 diff = <<'EOL'
@@ -94,6 +94,22 @@ patch.changed_lines
 # <Git::Diff::Parser::Line:0x007fb068c17580 @number=15,
 # @content="+          body = concat_body(data)\n", @patch_position=13>]
 ```
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'git-diff-parser'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install git-diff-parser
 
 ## Development
 
