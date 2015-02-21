@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Git::Diff::Parser::DiffParser do
   describe '#parse' do
     let(:file1) { 'lib/saddler/reporter/github.rb' }
-    let(:body1) { <<-'EOS'
+    let(:body1) do
+      <<-'EOS'
 @@ -2,6 +2,7 @@
  require 'octokit'
  require 'git'
@@ -13,9 +14,10 @@ describe Git::Diff::Parser::DiffParser do
  require 'saddler/reporter/github/client'
  require 'saddler/reporter/github/comment'
     EOS
-    }
+    end
     let(:file2) { 'lib/saddler/reporter/github/commit_comment.rb' }
-    let(:body2) { <<-'EOS'
+    let(:body2) do
+      <<-'EOS'
 @@ -2,6 +2,7 @@ module Saddler
    module Reporter
      module Github
@@ -55,7 +57,7 @@ describe Git::Diff::Parser::DiffParser do
      end
    end
     EOS
-    }
+    end
     it 'returns parsed patches' do
       diff_body = File.read('spec/support/fixtures/d1bd180-c27866c.diff')
       patches = Git::Diff::Parser::DiffParser.parse(diff_body)
