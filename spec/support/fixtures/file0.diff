@@ -1,0 +1,8 @@
+@@ -2,6 +2,7 @@
+ require 'octokit'
+ require 'git'
+ require 'saddler/reporter/github/version'
++require 'saddler/reporter/github/support'
+ require 'saddler/reporter/github/helper'
+ require 'saddler/reporter/github/client'
+ require 'saddler/reporter/github/comment'
