@@ -24,21 +24,75 @@ index fc33cdd..0638356 100644
 EOL
 
 patches = Git::Diff::Parser.parse(diff)
-=> [#<Git::Diff::Parser::Patch:0x007fb313189430
-@body="@@ -2,6 +2,7 @@\n require 'octokit'\n require
- 'git'\n require 'saddler/reporter/github/version'\n+r
- equire 'saddler/reporter/github/support'\n require 'sad
- dler/reporter/github/helper'\n require 'saddler/reporte
- r/github/client'\n require 'saddler/reporter/github/com
- ment'\n", @file="lib/saddler/reporter/github.rb">]
+#=> [#<Git::Diff::Parser::Patch:0x007fb313189430
+# @body="@@ -2,6 +2,7 @@\n require 'octokit'\n require
+# 'git'\n require 'saddler/reporter/github/version'\n+r
+# equire 'saddler/reporter/github/support'\n require 'sad
+# dler/reporter/github/helper'\n require 'saddler/reporte
+# r/github/client'\n require 'saddler/reporter/github/com
+# ment'\n", @file="lib/saddler/reporter/github.rb">]
 
 patches[0].file
-=> "lib/saddler/reporter/github.rb"
+#=> "lib/saddler/reporter/github.rb"
+
 patches[0].changed_lines
-=> [#<Git::Diff::Parser::Line:0x007fb3130a53e8
- @number=5,
- @content="+require 'saddler/reporter/github/support'\n",
- @patch_position=4>]
+#=> [#<Git::Diff::Parser::Line:0x007fb3130a53e8
+# @number=5,
+# @content="+require 'saddler/reporter/github/support'\n",
+# @patch_position=4>]
+```
+
+```ruby
+diff = <<-'EOS'
+@@ -2,6 +2,7 @@ module Saddler
+   module Reporter
+     module Github
+       class CommitComment
++        include Support
+         include Helper
+
+         # https://developer.github.com/v3/repos/comments/#create-a-commit-comment
+@@ -11,7 +12,7 @@ def report(messages, options)
+           data = parse(messages)
+
+           # build comment
+-          body = build_body(data)
++          body = concat_body(data)
+           return if body.empty?
+           comment = Comment.new(sha1, body, nil, nil)
+
+@@ -25,20 +26,6 @@ def report(messages, options)
+           # create commit_comment
+           client.create_commit_comment(comment)
+         end
+-
+-        def build_body(data)
+-          buffer = []
+-          files = data['checkstyle']['file'] ||= []
+-          files.each do |file|
+-            errors = file['error'] ||= []
+-            errors.each do |error|
+-              severity = error['@severity'] && error['@severity'].upcase
+-              message = error['@message']
+-              buffer << [severity, message].compact.join(': ')
+-            end
+-          end
+-          buffer.join("\n")
+-        end
+       end
+     end
+   end
+EOS
+
+patch = Git::Diff::Parser::Patch.new(diff)
+#=> #<Git::Diff::Parser::Patch:0x007fb068ca7a18
+# @body="@@ -2,6 +2,7 @@ module Saddler (snip)">
+
+patch.changed_lines
+#=> [#<Git::Diff::Parser::Line:0x007fb068c17af8 @number=5,
+# @content="+        include Support\n", @patch_position=4>,
+# <Git::Diff::Parser::Line:0x007fb068c17580 @number=15,
+# @content="+          body = concat_body(data)\n", @patch_position=13>]
 ```
 
 ## Development
