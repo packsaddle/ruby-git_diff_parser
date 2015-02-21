@@ -13,7 +13,7 @@ module Git
             case line.chomp
             when /^diff/
               unless patch.empty?
-                parsed << Patch.new(patch.join("\n"), file: file_name)
+                parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
                 patch.clear
                 file_name = ''
               end
@@ -25,7 +25,7 @@ module Git
             when /^(?<body>[\ @\+\-\\].*)/
               patch << Regexp.last_match[:body] if body
               if !patch.empty? && body && line_count == count + 1
-                parsed << Patch.new(patch.join("\n"), file: file_name)
+                parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
                 patch.clear
                 file_name = ''
               end
