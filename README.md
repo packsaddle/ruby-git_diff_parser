@@ -1,7 +1,7 @@
-# Git::Diff::Parser
+# GitDiffParser
 
-[![Gem Version](http://img.shields.io/gem/v/git-diff-parser.svg?style=flat)](http://badge.fury.io/rb/git-diff-parser)
-[![Build Status](http://img.shields.io/travis/packsaddle/ruby-git-diff-parser/master.svg?style=flat)](https://travis-ci.org/packsaddle/ruby-git-diff-parser)
+[![Gem Version](http://img.shields.io/gem/v/git_diff_parser.svg?style=flat)](http://badge.fury.io/rb/git_diff_parser)
+[![Build Status](http://img.shields.io/travis/packsaddle/ruby-git_diff_parser/master.svg?style=flat)](https://travis-ci.org/packsaddle/ruby-git_diff_parser)
 
 Parser for `git diff`.
 
@@ -23,8 +23,8 @@ index fc33cdd..0638356 100644
  require 'saddler/reporter/github/comment'
 EOL
 
-patches = Git::Diff::Parser.parse(diff)
-#=> [#<Git::Diff::Parser::Patch:0x007fb313189430
+patches = GitDiffParser.parse(diff)
+#=> [#<GitDiffParser::Patch:0x007fb313189430
 # @body="@@ -2,6 +2,7 @@\n require 'octokit'\n require
 # 'git'\n require 'saddler/reporter/github/version'\n+r
 # equire 'saddler/reporter/github/support'\n require 'sad
@@ -36,7 +36,7 @@ patches[0].file
 #=> "lib/saddler/reporter/github.rb"
 
 patches[0].changed_lines
-#=> [#<Git::Diff::Parser::Line:0x007fb3130a53e8
+#=> [#<GitDiffParser::Line:0x007fb3130a53e8
 # @number=5,
 # @content="+require 'saddler/reporter/github/support'\n",
 # @patch_position=4>]
@@ -84,14 +84,14 @@ diff = <<-'EOS'
    end
 EOS
 
-patch = Git::Diff::Parser::Patch.new(diff)
-#=> #<Git::Diff::Parser::Patch:0x007fb068ca7a18
+patch = GitDiffParser::Patch.new(diff)
+#=> #<GitDiffParser::Patch:0x007fb068ca7a18
 # @body="@@ -2,6 +2,7 @@ module Saddler (snip)">
 
 patch.changed_lines
-#=> [#<Git::Diff::Parser::Line:0x007fb068c17af8 @number=5,
+#=> [#<GitDiffParser::Line:0x007fb068c17af8 @number=5,
 # @content="+        include Support\n", @patch_position=4>,
-# <Git::Diff::Parser::Line:0x007fb068c17580 @number=15,
+# <GitDiffParser::Line:0x007fb068c17580 @number=15,
 # @content="+          body = concat_body(data)\n", @patch_position=13>]
 ```
 
@@ -100,7 +100,7 @@ patch.changed_lines
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'git-diff-parser'
+gem 'git_diff_parser'
 ```
 
 And then execute:
@@ -109,7 +109,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install git-diff-parser
+    $ gem install git_diff_parser
 
 ## Development
 
@@ -119,20 +119,20 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/packsaddle/ruby-git-diff-parser/fork )
+1. Fork it ( https://github.com/packsaddle/ruby-git_diff_parser/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
 ## License
-### git-diff-parser
+### git_diff_parser
 Copyright (c) 2015 sanemat. [Licensed under the MIT license](./LICENSE)
 
 ### original [thoughtbot/hound](https://github.com/thoughtbot/hound)
 
 Copyright (c) 2014 thoughtbot, inc. [Licensed under the MIT license](./thoughtbot-hound/LICENSE)
 
-* lib/git/diff/parser/line.rb <- app/models/line.rb
-* lib/git/diff/parser/patch.rb <- app/models/patch.rb
-* spec/git/diff/parser/patch_spec.rb <- spec/models/patch_spec.rb
+* lib/git_diff_parser/line.rb <- app/models/line.rb
+* lib/git_diff_parser/patch.rb <- app/models/patch.rb
+* spec/git_diff_parser/patch_spec.rb <- spec/models/patch_spec.rb

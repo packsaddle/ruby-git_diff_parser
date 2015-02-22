@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Git::Diff::Parser::DiffParser do
+describe GitDiffParser::DiffParser do
   describe '#parse' do
     let(:file0) { 'lib/saddler/reporter/github.rb' }
     let(:body0) { File.read('spec/support/fixtures/file0.diff') }
@@ -12,7 +12,7 @@ describe Git::Diff::Parser::DiffParser do
     let(:body3) { File.read('spec/support/fixtures/file3.diff') }
     it 'returns parsed patches' do
       diff_body = File.read('spec/support/fixtures/d1bd180-c27866c.diff')
-      patches = Git::Diff::Parser::DiffParser.parse(diff_body)
+      patches = GitDiffParser::DiffParser.parse(diff_body)
 
       expect(patches.size).to eq 4
       expect(patches[0].file).to eq file0
