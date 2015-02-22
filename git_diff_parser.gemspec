@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'git/diff/parser/version'
+require 'git_diff_parser/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'git-diff-parser'
-  spec.version       = Git::Diff::Parser::VERSION
+  spec.name          = 'git_diff_parser'
+  spec.version       = GitDiffParser::VERSION
   spec.authors       = ['sanemat']
   spec.email         = ['o.gata.ken@gmail.com']
 
   spec.summary       = 'Parser for `git diff`.'
   spec.description   = 'Parse `git diff` result.'
-  spec.homepage      = 'https://github.com/packsaddle/ruby-git-diff-parser'
+  spec.homepage      = 'https://github.com/packsaddle/ruby-git_diff_parser'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`
