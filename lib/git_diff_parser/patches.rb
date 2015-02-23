@@ -13,16 +13,16 @@ module GitDiffParser
       map(&:file)
     end
 
-    def hashes
-      map(&:hash)
+    def secure_hashes
+      map(&:secure_hash)
     end
 
     def find_patch_by_file(file)
       find { |patch| patch.file == file }
     end
 
-    def find_patch_by_hash(hash)
-      find { |patch| patch.hash == hash }
+    def find_patch_by_secure_hash(secure_hash)
+      find { |patch| patch.secure_hash == secure_hash }
     end
   end
 end
