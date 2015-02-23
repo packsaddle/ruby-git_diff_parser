@@ -8,5 +8,17 @@ module GitDiffParser
     def initialize(*args)
       super Array.new(*args)
     end
+
+    def files
+      map(&:file)
+    end
+
+    def find_patch_by_file(file)
+      find { |patch| patch.file == file }
+    end
+
+    def find_patch_by_hash(hash)
+      find { |patch| patch.hash == hash }
+    end
   end
 end
