@@ -35,6 +35,10 @@ module GitDiffParser
       end
     end
 
+    def changed_line_numbers
+      changed_lines.map(&:number)
+    end
+
     private
 
     def lines
