@@ -20,5 +20,23 @@ module GitDiffParser
         end
       end
     end
+
+    describe '#changed_line_numbers' do
+      it 'returns line numbers that were modified' do
+        patch_body = File.read('spec/support/fixtures/patch.diff')
+        patch = Patch.new(patch_body)
+
+        expect(patch.changed_line_numbers.size).to eq(3)
+        expect(patch.changed_line_numbers).to eq [14, 22, 54]
+      end
+
+      context 'when body is nil' do
+        it 'returns no line numbers' do
+          patch = Patch.new(nil)
+
+          expect(patch.changed_line_numbers.size).to eq(0)
+        end
+      end
+    end
   end
 end
