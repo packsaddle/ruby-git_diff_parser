@@ -4,11 +4,12 @@ module GitDiffParser
     MODIFIED_LINE = /^\+(?!\+|\+)/
     NOT_REMOVED_LINE = /^[^-]/
 
-    attr_accessor :file, :body
+    attr_accessor :file, :body, :hash
 
     def initialize(body, options = {})
       @body = body || ''
       @file = options[:file] || options['file'] if options[:file] || options['file']
+      @hash = options[:hash] || options['hash'] if options[:hash] || options['hash']
     end
 
     def changed_lines
