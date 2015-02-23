@@ -13,6 +13,10 @@ module GitDiffParser
       map(&:file)
     end
 
+    def hashes
+      map(&:hash)
+    end
+
     def find_patch_by_file(file)
       find { |patch| patch.file == file }
     end
