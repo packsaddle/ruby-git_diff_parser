@@ -40,7 +40,7 @@ module GitDiffParser
     end
 
     def find_patch_position_by_line_number(line_number)
-      target = find { |line| line.number == line_number }
+      target = changed_lines.find { |line| line.number == line_number }
       return nil unless target
       target.patch_position
     end

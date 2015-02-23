@@ -38,5 +38,24 @@ module GitDiffParser
         end
       end
     end
+
+    describe '#find_patch_position_by_line_number' do
+      it 'returns patch position that were included' do
+        patch_body = File.read('spec/support/fixtures/patch.diff')
+        patch = Patch.new(patch_body)
+        position = 5
+
+        expect(patch.find_patch_position_by_line_number(12)).to be_nil
+        expect(patch.find_patch_position_by_line_number(14)).to eq(position)
+      end
+
+      context 'when body is nil' do
+        it 'returns no patch position' do
+          patch = Patch.new(nil)
+
+          expect(patch.find_patch_position_by_line_number(14)).to be_nil
+        end
+      end
+    end
   end
 end
