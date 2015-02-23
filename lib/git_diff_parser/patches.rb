@@ -21,7 +21,7 @@ module GitDiffParser
       find { |patch| patch.file == file }
     end
 
-    def find_patch_by_secure_hashes(secure_hash)
+    def find_patch_by_secure_hash(secure_hash)
       find { |patch| patch.secure_hash == secure_hash }
     end
   end
