@@ -1,41 +1,18 @@
 module GitDiffParser
   # Parse entire `git diff` into Patches and Patch
+  #
+  # @deprecated
   class DiffParser
     # Parse entire `git diff` into Patches and Patch
+    #
+    # @deprecated Use {Patches.parse} instead.
     #
     # @param contents [String] `git diff` result
     #
     # @return [Patches<Patch>] parsed object
     def self.parse(contents)
-      body = false
-      file_name = ''
-      patch = []
-      lines = contents.lines
-      line_count = lines.count
-      parsed = Patches.new
-      lines.each_with_index do |line, count|
-        case line.chomp
-        when /^diff/
-          unless patch.empty?
-            parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
-            patch.clear
-            file_name = ''
-          end
-          body = false
-        when /^\-\-\-/
-        when %r{^\+\+\+ b/(?<file_name>.*)}
-          file_name = Regexp.last_match[:file_name]
-          body = true
-        when /^(?<body>[\ @\+\-\\].*)/
-          patch << Regexp.last_match[:body] if body
-          if !patch.empty? && body && line_count == count + 1
-            parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
-            patch.clear
-            file_name = ''
-          end
-        end
-      end
-      parsed
+      warn '[DEPRECATION] `DiffParser.parse` is deprecated.  Please use `Patches.parse` instead.'
+      Patches.parse(contents)
     end
   end
 end
