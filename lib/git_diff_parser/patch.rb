@@ -1,4 +1,5 @@
 module GitDiffParser
+  # Parsed patch
   class Patch
     RANGE_INFORMATION_LINE = /^@@ .+\+(?<line_number>\d+),/
     MODIFIED_LINE = /^\+(?!\+|\+)/

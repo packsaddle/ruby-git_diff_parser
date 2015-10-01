@@ -1,5 +1,11 @@
 module GitDiffParser
+  # Parse entire `git diff` into Patches and Patch
   class DiffParser
+    # Parse entire `git diff` into Patches and Patch
+    #
+    # @param contents [String] `git diff` result
+    #
+    # @return [Patches<Patch>] parsed object
     def self.parse(contents)
       body = false
       file_name = ''
