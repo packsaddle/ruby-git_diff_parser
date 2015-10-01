@@ -5,6 +5,13 @@ module GitDiffParser
     NOT_REMOVED_LINE = /^[^-]/
 
     attr_accessor :file, :body, :secure_hash
+    # @!attribute [rw] file
+    #   @return [String, nil] file path or nil
+    # @!attribute [rw] body
+    #   @return [String, nil] patch section in `git diff` or nil
+    #   @see #initialize
+    # @!attribute [rw] secure_hash
+    #   @return [String, nil] target sha1 hash or nil
 
     # @param body [String] patch section in `git diff`.
     #   GitHub's pull request file's patch.
@@ -44,6 +51,7 @@ module GitDiffParser
       @secure_hash = options[:secure_hash] || options['secure_hash'] if options[:secure_hash] || options['secure_hash']
     end
 
+    # @return [Array<Line>] changed lines
     def changed_lines
       line_number = 0
 
@@ -67,10 +75,14 @@ module GitDiffParser
       end
     end
 
+    # @return [Array<Integer>] changed line numbers
     def changed_line_numbers
       changed_lines.map(&:number)
     end
 
+    # @param line_number [Integer] line number
+    #
+    # @return [Integer, nil] patch position
     def find_patch_position_by_line_number(line_number)
       target = changed_lines.find { |line| line.number == line_number }
       return nil unless target
