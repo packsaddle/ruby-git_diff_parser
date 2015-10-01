@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "conventional-changelog": "0.4.3",
+    "npm-check-updates": "^2.2.3",
+    "urijs": "^1.16.1"
+  },
+  "scripts": {
+    "changelog": "conventional-changelog -i changelog.md --overwrite --preset angular --context .conventional-changelog.context.js",
+    "ncu": "ncu -u"
+  }
+}
