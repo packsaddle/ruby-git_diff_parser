@@ -6,11 +6,10 @@ require 'git_diff_parser/diff_parser'
 
 # Parse `git diff` into patches and lines
 module GitDiffParser
-
   # @param contents [String] `git diff` result.
   #
   # @return [Patches<Patch>] parsed patches and lines
   def self.parse(contents)
-    DiffParser.parse(contents)
+    Patches.parse(contents)
   end
 end
