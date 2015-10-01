@@ -7,6 +7,8 @@
 
 ## Examples
 
+### Parse entire `git diff`
+
 ```ruby
 diff = <<'EOL'
 diff --git a/lib/saddler/reporter/github.rb b/lib/saddler/reporter/github.rb
@@ -25,12 +27,8 @@ EOL
 
 patches = GitDiffParser.parse(diff)
 #=> [#<GitDiffParser::Patch:0x007fb313189430
-# @body="@@ -2,6 +2,7 @@\n require 'octokit'\n require
-# 'git'\n require 'saddler/reporter/github/version'\n+r
-# equire 'saddler/reporter/github/support'\n require 'sad
-# dler/reporter/github/helper'\n require 'saddler/reporte
-# r/github/client'\n require 'saddler/reporter/github/com
-# ment'\n", @file="lib/saddler/reporter/github.rb">]
+# @body="@@ -2,6 +2,7 @@\n require 'octokit'\n require 'git'\n require 'saddler/reporter/github/version'\n+r (snip)",
+# @file="lib/saddler/reporter/github.rb">]
 
 patches[0].file
 #=> "lib/saddler/reporter/github.rb"
@@ -41,6 +39,14 @@ patches[0].changed_lines
 # @content="+require 'saddler/reporter/github/support'\n",
 # @patch_position=4>]
 ```
+
+
+### Parse single patch
+
+* patch section in `git diff`.
+* GitHub's [pull request file's patch](https://developer.github.com/v3/pulls/#list-pull-requests-files).
+* GitHub's [commit file's patch](https://developer.github.com/v3/repos/commits/#get-a-single-commit).
+
 
 ```ruby
 diff = <<-'EOS'
