@@ -1,7 +1,15 @@
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
+#!/usr/bin/env ruby
 
-bundle install
-
-# Do any other automated setup that you need to do here
+require 'open3'
+unless ENV['CI']
+  out, err, status = Open3.capture3(*%w(bundle install))
+  $stdout.puts out
+  $stderr.puts err
+  exit status.exitstatus if !status.exitstatus.nil? && status.exitstatus != 0
+end
+unless ENV['CI']
+  out, err, status = Open3.capture3(*%w(npm install))
+  $stdout.puts out
+  $stderr.puts err
+  exit status.exitstatus if !status.exitstatus.nil? && status.exitstatus != 0
+end
