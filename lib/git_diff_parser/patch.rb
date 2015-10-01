@@ -6,6 +6,38 @@ module GitDiffParser
 
     attr_accessor :file, :body, :secure_hash
 
+    # @param body [String] patch section in `git diff`.
+    #   GitHub's pull request file's patch.
+    #   GitHub's commit file's patch.
+    #
+    #    <<-BODY
+    #    @@ -11,7 +11,7 @@ def valid?
+    #
+    #       def run
+    #         api.create_pending_status(*api_params, 'Hound is working...')
+    #    -    @style_guide.check(pull_request_additions)
+    #    +    @style_guide.check(api.pull_request_files(@pull_request))
+    #         build = repo.builds.create!(violations: @style_guide.violations)
+    #         update_api_status(build)
+    #       end
+    #    @@ -19,6 +19,7 @@ def run
+    #       private
+    #
+    #       def update_api_status(build = nil)
+    #    +    # might not need this after using Rubocop and fetching individual files.
+    #         sleep 1
+    #         if @style_guide.violations.any?
+    #           api.create_failure_status(*api_params, 'Hound does not approve', build_url(build))
+    #    BODY
+    #
+    # @param options [Hash] options
+    # @option options [String] :file file path
+    # @option options [String] 'file' file path
+    # @option options [String] :secure_hash target sha1 hash
+    # @option options [String] 'secure_hash' target sha1 hash
+    #
+    # @see https://developer.github.com/v3/repos/commits/#get-a-single-commit
+    # @see https://developer.github.com/v3/pulls/#list-pull-requests-files
     def initialize(body, options = {})
       @body = body || ''
       @file = options[:file] || options['file'] if options[:file] || options['file']
