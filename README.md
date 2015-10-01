@@ -1,9 +1,9 @@
 # GitDiffParser
 
-[![Gem Version](http://img.shields.io/gem/v/git_diff_parser.svg?style=flat)](http://badge.fury.io/rb/git_diff_parser)
-[![Build Status](http://img.shields.io/travis/packsaddle/ruby-git_diff_parser/master.svg?style=flat)](https://travis-ci.org/packsaddle/ruby-git_diff_parser)
+[![Gem version][gem-image]][gem-url] [![Travis-CI Status][travis-image]][travis-url] [![yard docs][docs-image]][docs-url]
 
-Parser for `git diff`.
+> Parse `git diff` into patches and lines.
+
 
 ## Examples
 
@@ -95,6 +95,17 @@ patch.changed_lines
 # @content="+          body = concat_body(data)\n", @patch_position=13>]
 ```
 
+
+## API
+
+And more *[details][docs-url]*.
+
+
+## Changelog
+
+[changelog.md](./changelog.md).
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -111,11 +122,13 @@ Or install it yourself as:
 
     $ gem install git_diff_parser
 
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
 
 ## Contributing
 
@@ -125,9 +138,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
+
 ## License
+
 ### git_diff_parser
 Copyright (c) 2015 sanemat. [Licensed under the MIT license](./LICENSE)
+
 
 ### original [thoughtbot/hound](https://github.com/thoughtbot/hound)
 
@@ -136,3 +152,11 @@ Copyright (c) 2014 thoughtbot, inc. [Licensed under the MIT license](./thoughtbo
 * lib/git_diff_parser/line.rb <- app/models/line.rb
 * lib/git_diff_parser/patch.rb <- app/models/patch.rb
 * spec/git_diff_parser/patch_spec.rb <- spec/models/patch_spec.rb
+
+
+[travis-url]: https://travis-ci.org/packsaddle/ruby-git_diff_parser
+[travis-image]: https://img.shields.io/travis/packsaddle/ruby-git_diff_parser/master.svg?style=flat-square&label=build%20%28linux%29
+[gem-url]: https://rubygems.org/gems/git_diff_parser
+[gem-image]: http://img.shields.io/gem/v/git_diff_parser.svg?style=flat-square
+[docs-url]: http://www.rubydoc.info/gems/git_diff_parser
+[docs-image]: https://img.shields.io/badge/yard-docs-blue.svg?style=flat-square

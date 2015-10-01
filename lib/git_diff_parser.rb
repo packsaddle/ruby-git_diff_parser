@@ -4,7 +4,7 @@ require 'git_diff_parser/patch'
 require 'git_diff_parser/patches'
 require 'git_diff_parser/diff_parser'
 
-# Parser `git diff` into patches and lines
+# Parse `git diff` into patches and lines
 module GitDiffParser
 
   # @param contents [String] `git diff` result.
