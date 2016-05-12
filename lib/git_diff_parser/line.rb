@@ -2,6 +2,8 @@ module GitDiffParser
   # Parsed line
   class Line
     attr_reader :content, :number, :patch_position
+    # @!attribute [r] content
+    #   @return [String] content
     # @!attribute [r] number
     #   @return [Integer] line number
     # @!attribute [r] patch_position
