@@ -2,12 +2,14 @@
 
 require 'open3'
 unless ENV['CI']
+  $stdout.puts 'bundle install'
   out, err, status = Open3.capture3(*%w(bundle install))
   $stdout.puts out
   $stderr.puts err
   exit status.exitstatus if !status.exitstatus.nil? && status.exitstatus != 0
 end
 unless ENV['CI']
+  $stdout.puts 'npm install'
   out, err, status = Open3.capture3(*%w(npm install))
   $stdout.puts out
   $stderr.puts err
