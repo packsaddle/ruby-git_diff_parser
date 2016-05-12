@@ -1,3 +1,11 @@
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v2.2.0...v2.3.0) (2016-05-12)
+
+### Features
+
+* **line:** expose the line content ([16b8dec](https://github.com/packsaddle/ruby-git_diff_parser/commit/16b8dec))
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v2.1.3...v2.2.0) (2015-10-01)
 
