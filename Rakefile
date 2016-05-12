@@ -10,8 +10,8 @@ task default: :spec
 
 require 'yard'
 require 'yard/rake/yardoc_task'
-DOC_FILES = ['lib/**/*.rb']
-DOC_OPTIONS = ['--debug', '--verbose']
+DOC_FILES = ['lib/**/*.rb'].freeze
+DOC_OPTIONS = ['--debug', '--verbose'].freeze
 YARD::Rake::YardocTask.new(:doc) do |t|
   t.files = DOC_FILES
   t.options = DOC_OPTIONS if Rake.application.options.trace
