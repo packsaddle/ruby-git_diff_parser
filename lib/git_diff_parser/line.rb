@@ -14,9 +14,9 @@ module GitDiffParser
     # @option params [String] :content content (required)
     # @option params [Integer] :patch_position patch position (required)
     def initialize(params)
-      fail(ArgumentError('number is required')) unless params[:number]
-      fail(ArgumentError('content is required')) unless params[:content]
-      fail(ArgumentError('patch_position is required')) unless params[:patch_position]
+      raise(ArgumentError('number is required')) unless params[:number]
+      raise(ArgumentError('content is required')) unless params[:content]
+      raise(ArgumentError('patch_position is required')) unless params[:patch_position]
       @number = params[:number]
       @content = params[:content]
       @patch_position = params[:patch_position]
