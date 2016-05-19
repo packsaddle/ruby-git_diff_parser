@@ -26,7 +26,9 @@ module GitDiffParser
             file_name = ''
           end
           body = false
-        when /^\-\-\-/
+        when %r{^\-\-\- a/(?<file_name>.*)}
+          file_name = Regexp.last_match[:file_name]
+          body = true
         when %r{^\+\+\+ b/(?<file_name>.*)}
           file_name = Regexp.last_match[:file_name]
           body = true
