@@ -14,5 +14,8 @@ module GitDiffParser
       warn '[DEPRECATION] `DiffParser.parse` is deprecated.  Please use `Patches.parse` instead.'
       Patches.parse(contents)
     end
+    def self.parselog(contents)
+      Commits.parse(contents)
+    end
   end
 end
