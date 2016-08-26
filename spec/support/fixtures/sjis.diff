@@ -1,0 +1,8 @@
+diff --git a/spec/support/fixtures/sjis.csv b/spec/support/fixtures/sjis.csv
+new file mode 100644
+index 0000000..4c19aee
+--- /dev/null
++++ b/spec/support/fixtures/sjis.csv
+@@ -0,0 +1 @@
++�M	abcdefg
+\ No newline at end of file

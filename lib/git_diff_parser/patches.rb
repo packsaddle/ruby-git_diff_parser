@@ -18,7 +18,7 @@ module GitDiffParser
       line_count = lines.count
       parsed = new
       lines.each_with_index do |line, count|
-        case line.chomp
+        case parsed.scrub_string(line.chomp)
         when /^diff/
           unless patch.empty?
             parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
@@ -40,6 +40,15 @@ module GitDiffParser
         end
       end
       parsed
+    end
+
+    # @return [String]
+    def scrub_string(line)
+      if RUBY_VERSION >= '2.1'
+        line.scrub
+      else
+        line.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
+      end
     end
 
     # @return [Patches<Patch>]
