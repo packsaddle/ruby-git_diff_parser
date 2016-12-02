@@ -16,6 +16,7 @@ module GitDiffParser
       author = ''
       date = ''
       chash = ''
+      mhash = ''
       file = ''
       files = []
       comments = []
@@ -27,7 +28,7 @@ module GitDiffParser
         case line.chomp
         when %r{^commit (?<hash>.*)}
           if body == true
-            parsed << Commit.new(hash: chash, author: author, date: date, comment: comments, files: files)
+            parsed << Commit.new(hash: chash, mhash: mhash, author: author, date: date, comment: comments, files: files)
             comments.clear
             files.clear
             body = false
@@ -44,15 +45,18 @@ module GitDiffParser
               date = Regexp.last_match[:date]
               body = true
           end
-        when /^Merge: /
-          consume = false
+        when %r{^Merge: (?<mhash>.*)}
+          if consume == true
+              mhash = Regexp.last_match[:mhash]
+              body = true
+          end
         when %r{^[ACDMRTUXB]\s(?<file>.*)}
           if consume == true
               file = Regexp.last_match[:file]
               files << file
               body = true
               if line_count == count + 1
-                parsed << Commit.new(hash: chash, author: author, date: date, comment: comments, files: files)
+                parsed << Commit.new(hash: chash, mergeh: mhash, author: author, date: date, comment: comments, files: files)
               end
           end
         else
