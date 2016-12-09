@@ -14,7 +14,9 @@ module GitDiffParser
                 if !(commit.mhash.nil? || commit.mhash.empty?)
                   commit.comment.each { |comment|
                     if comment =~ /Merge pull request/
-                      @prs << comment[/\d+/].to_i
+                      id = comment[/\d+/].to_i
+                      text = comment.split(" from ").last
+                      @prs << {:id => id, :text => text}
                     end
                   }
                 end
