@@ -39,6 +39,17 @@ module GitDiffParser
       end
     end
 
+    context "Newline inserted at EOF" do
+      describe "changed_line_numbers" do
+        it "returns changed line number" do
+          patch_body = File.read('spec/support/fixtures/file4.diff')
+          patch = Patch.new(patch_body)
+
+          expect(patch.changed_line_numbers).to eq [4]
+        end
+      end
+    end
+
     describe '#find_patch_position_by_line_number' do
       it 'returns patch position that were included' do
         patch_body = File.read('spec/support/fixtures/patch.diff')
