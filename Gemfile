@@ -4,6 +4,6 @@ source 'https://rubygems.org'
 gemspec
 gem 'byebug' if RUBY_VERSION >= '2.0.0'
 gem 'pry'
-gem 'rubocop'
+gem 'rubocop' if RUBY_VERSION >= '2.0.0'
 gem 'yard'
-gem 'parse_gemspec-cli'
+gem 'parse_gemspec-cli' if RUBY_VERSION >= '2.0.0'
