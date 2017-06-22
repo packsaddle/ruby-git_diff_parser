@@ -11,6 +11,11 @@ module GitDiffParser
       let(:body2) { File.read('spec/support/fixtures/file2.diff') }
       let(:file3) { 'lib/saddler/reporter/github/support.rb' }
       let(:body3) { File.read('spec/support/fixtures/file3.diff') }
+
+      let(:sjis_file) { 'spec/support/fixtures/sjis.csv' }
+      let(:sjis_diff) { sjis_file.gsub(/\.csv\z/, '.diff') }
+      let(:sjis_body) { File.read(sjis_diff) }
+
       it 'returns parsed patches' do
         diff_body = File.read('spec/support/fixtures/d1bd180-c27866c.diff')
         patches = Patches.parse(diff_body)
@@ -24,6 +29,12 @@ module GitDiffParser
         expect(patches[2].body).to eq body2
         expect(patches[3].file).to eq file3
         expect(patches[3].body).to eq body3
+      end
+
+      it 'handles non UTF-8 encoding characters' do
+        patches = nil
+        expect { patches = Patches.parse(sjis_body) }.not_to raise_error
+        expect(patches[0].file).to eq sjis_file
       end
     end
   end
