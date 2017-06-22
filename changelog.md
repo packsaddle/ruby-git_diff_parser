@@ -1,3 +1,11 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v2.3.0...v3.0.0) (2017-06-22)
+
+### Features
+
+* **patches:** convert non UTF-8 string to avoid invalid UTF-8 sequence errors ([a8f87bd](https://github.com/packsaddle/ruby-git_diff_parser/commit/a8f87bd))
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v2.2.0...v2.3.0) (2016-05-12)
 
