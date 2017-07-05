@@ -1,3 +1,11 @@
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v3.0.0...v3.1.0) (2017-07-05)
+
+### Features
+
+* **patch:** Added Patch#removed_lines method ([9acc263](https://github.com/packsaddle/ruby-git_diff_parser/commit/9acc263))
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v2.3.0...v3.0.0) (2017-06-22)
 
