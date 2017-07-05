@@ -77,6 +77,7 @@ module GitDiffParser
       end
     end
 
+    # @return [Array<Line>] removed lines
     def removed_lines
       line_number = 0
 
