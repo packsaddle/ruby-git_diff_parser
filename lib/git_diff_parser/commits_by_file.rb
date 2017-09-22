@@ -30,7 +30,7 @@ module GitDiffParser
                     if comment =~ /Merge pull request/
                       id = comment[/\d+/].to_i
                       text = comment.split(" from ").last
-                      @prs << {:id => id, :text => text}
+                      @prs << {:id => id, :text => text, :author => commit.author}
                     end
                   }
                 end
