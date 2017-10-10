@@ -31,6 +31,7 @@ module GitDiffParser
             parsed << Commit.new(hash: chash, mhash: mhash, author: author, date: date, comment: comments, files: files)
             comments.clear
             files.clear
+            mhash.clear
             body = false
           end
           chash = Regexp.last_match[:hash]
