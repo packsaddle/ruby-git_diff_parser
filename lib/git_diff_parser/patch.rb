@@ -92,6 +92,7 @@ module GitDiffParser
             patch_position: patch_position
           )
           lines << line
+        when NOT_REMOVED_LINE
           line_number += 1
         end
 
