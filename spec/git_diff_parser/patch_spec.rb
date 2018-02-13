@@ -27,7 +27,7 @@ module GitDiffParser
         patch = Patch.new(patch_body)
 
         expect(patch.removed_lines.size).to eq(7)
-        expect(patch.removed_lines.map(&:number)).to eq [14, 39, 39, 39, 39, 39, 54]
+        expect(patch.removed_lines.map(&:number)).to eq [14, 38, 39, 40, 41, 42, 58]
         expect(patch.removed_lines.map(&:patch_position)).to eq [4, 21, 22, 23, 24, 25, 36]
       end
 
