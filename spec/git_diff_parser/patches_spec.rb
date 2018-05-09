@@ -16,6 +16,10 @@ module GitDiffParser
       let(:sjis_diff) { sjis_file.gsub(/\.csv\z/, '.diff') }
       let(:sjis_body) { File.read(sjis_diff) }
 
+      let(:deleted_diff) { 'spec/support/fixtures/deleted.diff' }
+      let(:deleted_file) { 'spec/support/fixtures/hello.txt' }
+      let(:deleted_body) { File.read(deleted_diff.gsub(/\.diff\z/, '.body')) }
+
       it 'returns parsed patches' do
         diff_body = File.read('spec/support/fixtures/d1bd180-c27866c.diff')
         patches = Patches.parse(diff_body)
@@ -35,6 +39,14 @@ module GitDiffParser
         patches = nil
         expect { patches = Patches.parse(sjis_body) }.not_to raise_error
         expect(patches[0].file).to eq sjis_file
+      end
+
+      it 'returns patches for a deleted file' do
+        diff_body = File.read(deleted_diff)
+        patches = Patches.parse(diff_body)
+        expect(patches.size).to eq 1
+        expect(patches[0].file).to eq deleted_file
+        expect(patches[0].body).to eq deleted_body
       end
     end
   end
