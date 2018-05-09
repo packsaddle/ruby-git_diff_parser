@@ -13,6 +13,7 @@ module GitDiffParser
     def self.parse(contents)
       body = false
       file_name = ''
+      orig_file_name = ''
       patch = []
       lines = contents.lines
       line_count = lines.count
@@ -24,11 +25,16 @@ module GitDiffParser
             parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
             patch.clear
             file_name = ''
+            orig_file_name = ''
           end
           body = false
-        when /^\-\-\-/
+        when %r{^\-\-\- a/(?<file_name>.*)}
+          orig_file_name = Regexp.last_match[:file_name]
         when %r{^\+\+\+ b/(?<file_name>.*)}
           file_name = Regexp.last_match[:file_name]
+          body = true
+        when %r{^\+\+\+ /dev/null}
+          file_name = orig_file_name
           body = true
         when /^(?<body>[\ @\+\-\\].*)/
           patch << Regexp.last_match[:body] if body
@@ -36,6 +42,7 @@ module GitDiffParser
             parsed << Patch.new(patch.join("\n") + "\n", file: file_name)
             patch.clear
             file_name = ''
+            orig_file_name = ''
           end
         end
       end

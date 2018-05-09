@@ -1,0 +1,7 @@
+diff --git a/spec/support/fixtures/hello.txt b/spec/support/fixtures/hello.txt
+deleted file mode 100644
+index af5626b..0000000
+--- a/spec/support/fixtures/hello.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Hello, world!
