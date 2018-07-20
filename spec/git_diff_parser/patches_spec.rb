@@ -15,6 +15,10 @@ module GitDiffParser
       let(:sjis_file) { 'spec/support/fixtures/sjis.csv' }
       let(:sjis_diff) { sjis_file.gsub(/\.csv\z/, '.diff') }
       let(:sjis_body) { File.read(sjis_diff) }
+      
+      let(:whitespace_file) { 'b/spec/support/fixtures/sjis.csv' }
+      let(:whitespace_filename_diff) { 'spec/support/fixtures/whitespacefilename.diff' }
+      let(:whitespace_filename_body) { File.read(whitespace_filename_diff) }
 
       it 'returns parsed patches' do
         diff_body = File.read('spec/support/fixtures/d1bd180-c27866c.diff')
@@ -35,6 +39,11 @@ module GitDiffParser
         patches = nil
         expect { patches = Patches.parse(sjis_body) }.not_to raise_error
         expect(patches[0].file).to eq sjis_file
+      end
+      
+      it 'correctly strips trailing whitespace from filenames' do
+        patches = Patches.parse(whitespace_filename_body)
+        expect(patches[0].file == whitespace_file)
       end
     end
   end
