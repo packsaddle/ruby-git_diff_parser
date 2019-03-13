@@ -1,3 +1,11 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v3.1.0...v3.2.0) (2019-03-13)
+
+### Fixes
+
+* **patches:** Fix trailing whitespace issue in filename parsing ([d679ad1](https://github.com/packsaddle/ruby-git_diff_parser/commit/d679ad1))
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v3.0.0...v3.1.0) (2017-07-05)
 
