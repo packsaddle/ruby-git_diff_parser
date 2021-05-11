@@ -113,8 +113,6 @@ module GitDiffParser
       target.patch_position
     end
 
-    private
-
     def lines
       @body.lines
     end
