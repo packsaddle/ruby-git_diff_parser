@@ -1,3 +1,10 @@
+# [4.0.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v3.2.0...v4.0.0) (2021-11-04)
+
+### BREAKING CHANGES
+
+* **patch:** Fix changed_lines number calculation ([30bfcf5](https://github.com/packsaddle/ruby-git_diff_parser/commit/30bfcf5)) [#336](https://github.com/packsaddle/ruby-git_diff_parser/pull/336)
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/packsaddle/ruby-git_diff_parser/compare/v3.1.0...v3.2.0) (2019-03-13)
 
