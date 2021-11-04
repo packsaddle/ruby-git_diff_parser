@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "conventional-changelog-cli": "^1.2.0",
-    "npm-check-updates": "^2.2.3",
+    "conventional-changelog-cli": "^2.0.0",
+    "npm-check-updates": "^11.0.0",
     "urijs": "^1.16.1"
   },
   "scripts": {
