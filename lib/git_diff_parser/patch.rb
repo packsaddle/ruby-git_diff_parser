@@ -1,7 +1,7 @@
 module GitDiffParser
   # Parsed patch
   class Patch
-    RANGE_INFORMATION_LINE = /^@@ .+\+(?<line_number>\d+),/
+    RANGE_INFORMATION_LINE = /^@@ -(?<old_line_number>\d+),.+\+(?<line_number>\d+),/
     MODIFIED_LINE = /^\+(?!\+|\+)/
     REMOVED_LINE = /^[-]/
     NOT_REMOVED_LINE = /^[^-]/
@@ -87,7 +87,7 @@ module GitDiffParser
       lines.each_with_index.inject([]) do |lines, (content, patch_position)|
         case content
         when RANGE_INFORMATION_LINE
-          line_number = Regexp.last_match[:line_number].to_i
+          line_number = Regexp.last_match[:old_line_number].to_i
         when REMOVED_LINE
           line = Line.new(
             content: content,
@@ -95,6 +95,8 @@ module GitDiffParser
             patch_position: patch_position
           )
           lines << line
+          line_number += 1
+        when NOT_REMOVED_LINE
           line_number += 1
         end
 
